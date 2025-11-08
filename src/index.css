@@ -18,6 +18,10 @@ p {
   @apply font-medium text-secondary!
 }
 
+.common-hover-effect {
+  @apply duration-300 ease-linear
+}
+
 @plugin "daisyui" {
   themes: light --default, dark;
 }

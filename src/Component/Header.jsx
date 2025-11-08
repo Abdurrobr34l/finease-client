@@ -1,5 +1,7 @@
 import React from "react";
 import Container from "./Container";
+import logo from "../assets/logo.png";
+import { Link } from "react-router";
 
 const Header = () => {
   return (
@@ -53,7 +55,15 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">daisyUI</a>
+
+            {/* Logo */}
+            <Link to={"/"}>
+              <img
+                src={logo}
+                alt="It is fenease logo"
+                className="size-20 transition-transform common-hover-effect hover:scale-[103%]"
+              />
+            </Link>
           </div>
 
           {/* Navigation Menu */}
@@ -83,7 +93,21 @@ const Header = () => {
 
           {/* User Profile and Theme Toggler */}
           <div className="navbar-end">
-            <a className="btn">Button</a>
+            <button
+              // onClick={() => setOpen(!open)}
+              className="flex items-center justify-center w-12 h-12 rounded-full border border-secondary overflow-hidden"
+            >
+              {/* {user?.photoURL ? ( */}
+              <img
+                // src={user.photoURL}
+                src={logo}
+                alt="User Avatar"
+                className="w-full h-full object-cover"
+              />
+              {/* ) : ( */}
+              {/* <FaUserCircle className="text-3xl text-primary" /> */}
+              {/* )} */}
+            </button>
           </div>
         </div>
       </Container>
