@@ -3,7 +3,6 @@ import Container from "./Container";
 import logo from "../assets/logo.png";
 import { Link } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
-import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -11,7 +10,7 @@ const Header = () => {
 
   return (
     <header>
-      <Container className="py-6 px-0">
+      <Container className="py-3 px-0">
         <div className="navbar">
           {/* Dropdown Menu & Logo */}
           <div className="navbar-start">
@@ -107,7 +106,7 @@ const Header = () => {
             className="w-full h-full object-cover"
           />
         ) : (
-          <FaUserCircle className="text-3xl text-primary" />
+          <img src="https://img.icons8.com/?size=100&id=AZazdsitsrgg&format=png&color=000000"/>
         )}
       </button>
 
