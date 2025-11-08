@@ -9,3 +9,41 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif; /* headings */
 }
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-primary!
+}
+
+p {
+  @apply font-medium text-secondary!
+}
+
+@plugin "daisyui" {
+  themes: light --default, dark;
+}
+
+/* LIGHT THEME */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+ --color-primary:   #2C5F2D; /* modern violet-blue */
+  --color-secondary: #6A994E; /* soft purple accent */
+  --color-accent:    #FFC857; /* warm orange-gold for highlights */
+  --color-base-100:  #F0F2EB; /* subtle off-white background */
+  --color-neutral:  #4A4A4A; /* dark grey for good readability */
+}
+
+/* DARK THEME */
+@plugin "daisyui/theme" {
+  name: "dark";
+
+  --color-primary:   #1E3F20; /* glowing purple-blue */
+  --color-secondary: #4A6B3C; /* softer secondary accent */
+  --color-accent:    #FFD700; /* warm amber accent pop */
+  --color-base-100:  #1A1A1A; /* deep violet-black background */
+  --color-neutral:  #E0E0E0; /* light grey for good readability */
+}
+
+/* linear-gradient(to right, #2C5F2D, #6A994E) */
+/* linear-gradient(to right, #2C5F2D, #FFC857) */
