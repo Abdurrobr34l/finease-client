@@ -10,7 +10,7 @@ const RootLayout = () => {
       <Header></Header>
 
       <main className="section-padding min-h-[calc(100vh-(120px+496px))] bg-base-200">  {/*min-h-[calc(100vh-(120px+496px))] ----- 576px = header(120px) + footer(456px) */}
-        <Container>
+        <Container className="flex flex-col gap-[120px]">
           <Outlet></Outlet>
         </Container>
       </main>
