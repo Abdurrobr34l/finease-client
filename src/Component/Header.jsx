@@ -149,6 +149,16 @@ const Header = () => {
 
                     <li>
                       <Link
+                        to="/update-profile"
+                        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-base-200"
+                      >
+                        <CgProfile className="text-xl" />
+                        Update Profile
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link
                         to="/settings"
                         className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-base-200"
                       >

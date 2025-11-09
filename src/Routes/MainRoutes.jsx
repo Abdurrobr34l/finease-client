@@ -5,6 +5,7 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/Profile/UpdateProfile";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         path: "/update-profile",
         element: <UpdateProfile/>,
       },
+      {
+        path: "*",
+        element: <ErrorPage/>
+      }
     ]
   },
 ]);
