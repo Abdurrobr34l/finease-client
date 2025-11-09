@@ -33,11 +33,11 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  //* REGISTER
+  //* LOGOUT
   const logOut = () => {
-    setLoading(false);
-    return signOut(auth);
-  };
+  setLoading(true);
+  return signOut(auth).finally(() => setLoading(false));
+};
 
   //* TRACK USER
   useEffect(() => {

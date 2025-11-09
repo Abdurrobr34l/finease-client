@@ -58,8 +58,8 @@ h1, h2, h3, h4, h5, h6 {
   /* --color-base-300: oklch(92% 0.004 286.32); */
   /* --color-base-content: oklch(21% 0.006 285.885); */
   --color-primary: #EEF2F6;
-  /* --color-secondary: #757983; */
-  --color-secondary: #122B45;
+  --color-secondary: #757983;
+  /* --color-secondary: #122B45; */
   --color-accent: #0B8B60;
   /* --color-accent-content: #0D1529; */
 }
