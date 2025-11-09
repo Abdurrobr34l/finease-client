@@ -6,6 +6,8 @@ import { AuthContext } from "../Contexts/AuthContext";
 import { FaPortrait, FaUser } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { IoIosSettings, IoMdLogIn, IoMdLogOut } from "react-icons/io";
+import { GrUpdate } from "react-icons/gr";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -108,9 +110,49 @@ const Header = () => {
             </ul>
           </div>
 
-          {/* User Profile and Theme Toggler */}
+
           <div className="navbar-end gap-3">
-            <div className="relative">
+            {/* Theme Toggler */}
+            <div>
+              <label className="swap swap-rotate">
+                {/* checkbox controls the theme */}
+                <input
+                  type="checkbox"
+                  onChange={(e) => handleTheme(e.target.checked)}
+                  defaultChecked={localStorage.getItem("theme") === "dark"}
+                />
+
+                {/* light mode icon */}
+                <FiSun className="swap-off h-7 w-7 text-primary" />
+
+                {/* dark mode icon */}
+                <FiMoon className="swap-on h-7 w-7 text-primary" />
+              </label>
+            </div>
+
+            {/* Login & Logout Buttons */}
+            <div>
+              {user ? (
+                <Link
+                  onClick={logOut}
+                  data-tip="LogOut"
+                  className="tooltip tooltip-bottom flex items-center gap-2 text-error cursor-pointer transition-transform duration-300 ease-linear hover:scale-105"
+                >
+                  <IoMdLogOut className="text-3xl" />
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="tooltip tooltip-bottom flex items-center gap-2 text-success cursor-pointer transition-transform duration-300 ease-linear hover:scale-105"
+                  data-tip="LogIn"
+                >
+                  <IoMdLogIn className="text-3xl" />
+                </Link>
+              )}
+            </div>
+
+            {/* User Profile and Theme Toggler */}
+            <div className="tooltip tooltip-bottom relative" data-tip="Profile">
               {/* Profile Icon */}
               <button
                 onClick={() => setOpen(!open)}
@@ -133,7 +175,7 @@ const Header = () => {
                   <ul className="flex flex-col gap-2">
                     {user && (
                       <li className="px-3 py-2 text-sm font-medium text-primary/80">
-                        Hi, {user.displayName || "User"}
+                        Hi, <span className="font-semibold text-base text-accent">{user.displayName || "User"}</span>
                       </li>
                     )}
 
@@ -152,7 +194,7 @@ const Header = () => {
                         to="/update-profile"
                         className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-base-200"
                       >
-                        <CgProfile className="text-xl" />
+                        <GrUpdate className="text-lg" />
                         Update Profile
                       </Link>
                     </li>
@@ -189,36 +231,6 @@ const Header = () => {
                   </ul>
                 </div>
               )}
-            </div>
-
-            {/* Theme Toggler */}
-            <div>
-              <label className="swap swap-rotate">
-                {/* checkbox controls the theme */}
-                <input
-                  type="checkbox"
-                  onChange={(e) => handleTheme(e.target.checked)}
-                  defaultChecked={localStorage.getItem("theme") === "dark"}
-                />
-
-                {/* sun icon (light mode) */}
-                <svg
-                  className="swap-off h-7 w-7 fill-current text-yellow-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5.64,17l-.71.71a1,1,0,0,0,1.41,1.41l.71-.71A1,1,0,0,0,5.64,17ZM12,5a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM12,19a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM19,11h1a1,1,0,0,0,0,2H19a1,1,0,0,0,0-2ZM4,11H3a1,1,0,0,0,0,2H4a1,1,0,0,0,0-2Zm12.36,6A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM7.05,5.64A1,1,0,0,0,5.64,7.05l.71.71A1,1,0,1,0,7.76,6.34ZM16.95,7.05l.71-.71A1,1,0,1,0,16.25,5.64L15.54,6.35A1,1,0,1,0,16.95,7.05Z" />
-                </svg>
-
-                {/* moon icon (dark mode) */}
-                <svg
-                  className="swap-on h-7 w-7 fill-current text-slate-200"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Z" />
-                </svg>
-              </label>
             </div>
           </div>
         </div>
