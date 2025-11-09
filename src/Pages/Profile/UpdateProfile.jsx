@@ -4,12 +4,14 @@ import { AuthContext } from "../../Contexts/AuthContext";
 import { auth } from "../../Firebase/firebase.init";
 import { updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const UpdateProfile = () => {
   const { user } = useContext(AuthContext);
   const [name, setName] = useState(user?.displayName || "");
   const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
   const [updating, setUpdating] = useState(false);
+  const navigate = useNavigate()
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
@@ -19,7 +21,9 @@ const UpdateProfile = () => {
         displayName: name,
         photoURL: photoURL || null,
       });
+      
       toast.success("Profile updated successfully!");
+      navigate("/profile");
     } catch (err) {
       console.error("Profile update error:", err);
       toast.error(err.message || "Failed to update profile.");
@@ -48,13 +52,14 @@ const UpdateProfile = () => {
 
       <form
         onSubmit={handleUpdateProfile}
-        className="fieldset p-6 w-[335px] bg-white rounded-lg md:w-[500px] flex flex-col gap-4"
+        className="fieldset p-6 w-[335px] bg-base-100 rounded-lg md:w-[500px] flex flex-col gap-4"
       >
         <label className="label text-secondary">Name</label>
         <input
           type="text"
           className="input py-6.5 w-full bg-base-300 rounded-lg"
           value={name}
+          required
           onChange={(e) => setName(e.target.value)}
         />
 
@@ -63,6 +68,7 @@ const UpdateProfile = () => {
           type="text"
           className="input py-6.5 w-full bg-base-300 rounded-lg"
           value={photoURL}
+          required
           onChange={(e) => setPhotoURL(e.target.value)}
         />
 

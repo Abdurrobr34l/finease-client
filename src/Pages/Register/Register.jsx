@@ -80,7 +80,7 @@ const Register = () => {
       <h2 className="title">Create Your Account</h2>
 
       <form onSubmit={handleSubmit}>
-        <fieldset className="fieldset p-6 w-[335px] bg-white rounded-lg md:w-[500px]">
+        <fieldset className="fieldset p-6 w-[335px] bg-base-100 rounded-lg md:w-[500px]">
           <label className="label text-secondary">Name</label>
           <input
             type="text"

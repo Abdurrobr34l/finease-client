@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-hover {
-  @apply border-2 hover:text-accent hover:bg-transparent hover:border-accent
+  @apply shadow-none border-accent border-2 bg-accent transition-colors duration-300 ease-linear hover:text-accent hover:bg-transparent hover:border-accent
 }
 
 .title {

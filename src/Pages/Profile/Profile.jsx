@@ -26,7 +26,7 @@ const Profile = () => {
 
       <div className="card w-[335px] md:w-[500px] bg-base-100 shadow-lg rounded-xl p-8 flex flex-col items-center gap-4">
         {/* User Image */}
-        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-primary">
+        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent">
           {user.photoURL ? (
             <img
               src={user.photoURL}
@@ -47,7 +47,7 @@ const Profile = () => {
         {/* Update Profile Button */}
         <Link
         to={"/update-profile"}
-          className="btn bg-accent mt-4 w-full py-4 btn-hover"
+          className="btn mt-4 w-full py-4 btn-hover"
         >
           Update Profile
         </Link>
