@@ -10,9 +10,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif; /* headings */
 }
 
+.footer a {
+  @apply transition-colors hover:text-primary
+}
 
 .common-hover-effect {
-  @apply duration-300 ease-linear
+  @apply duration-400 ease-linear
 }
 
 @plugin "daisyui" {
@@ -24,53 +27,34 @@ h1, h2, h3, h4, h5, h6 {
   name: "light";
   default: true;
 
- /* --color-primary:   #2C5F2D; modern violet-blue */
-  /* --color-secondary: #6A994E; soft purple accent */
-  /* --color-accent:    #FFC857; warm orange-gold for highlights */
-  /* --color-base-100:  #F0F2EB; subtle off-white background */
-  /* --color-neutral:  #4A4A4A; dark grey for good readability */
-
-   --color-base-100: oklch(98% 0 0);
-  --color-base-200: oklch(96% 0.001 286.375);
-  --color-base-300: oklch(92% 0.004 286.32);
-  --color-base-content: oklch(21% 0.006 285.885);
-  --color-primary: oklch(59% 0.249 0.584);
-  --color-primary-content: oklch(97% 0.014 343.198);
-  --color-secondary: oklch(66% 0.179 58.318);
-  --color-secondary-content: oklch(98% 0.022 95.277);
-  --color-accent: oklch(60% 0.118 184.704);
-  --color-accent-content: oklch(98% 0.014 180.72);
+   --color-base-100: #E4E4E4;
+  --color-base-200: #f5f5f5;
+  /* --color-base-300: oklch(92% 0.004 286.32); */
+  /* --color-base-content: oklch(21% 0.006 285.885); */
+  --color-primary: #161616;
+  --color-secondary: #121212;
+  --color-accent: #0B8B60;
+  /* --color-accent-content: ##151818; */
 }
 
 /* DARK THEME */
 @plugin "daisyui/theme" {
   name: "dark";
 
-  /* --color-primary:   #1E3F20; glowing purple-blue */
-  /* --color-secondary: #4A6B3C; softer secondary accent */
-  /* --color-accent:    #FFD700; warm amber accent pop */
-  /* --color-base-100:  #1A1A1A; deep violet-black background */
-  /* --color-neutral:  #E0E0E0; light grey for good readability */
-  
-    --color-base-100: oklch(12% 0.042 264.695);
-  --color-base-200: oklch(20% 0.042 265.755);
-  --color-base-300: oklch(27% 0.041 260.031);
-  --color-base-content: oklch(96% 0.007 247.896);
-  --color-primary: oklch(87% 0.01 258.338);
-  --color-primary-content: oklch(13% 0.028 261.692);
-  --color-secondary: oklch(82% 0.119 306.383);
-  --color-secondary-content: oklch(29% 0.149 302.717);
-  --color-accent: oklch(90% 0.182 98.111);
-  --color-accent-content: oklch(28% 0.066 53.813);
+   --color-base-100: #010515;
+  --color-base-200: #0D1529;
+  /* --color-base-300: oklch(92% 0.004 286.32); */
+  /* --color-base-content: oklch(21% 0.006 285.885); */
+  --color-primary: #EEF2F6;
+  --color-secondary: #757983;
+  --color-accent: #0B8B60;
+  /* --color-accent-content: #0D1529; */
 }
 
-/* linear-gradient(to right, #2C5F2D, #6A994E) */
-/* linear-gradient(to right, #2C5F2D, #FFC857) */
-
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-primary!
+  @apply font-bold text-primary
 }
 
 p {
-  @apply font-medium text-secondary!
+  @apply font-medium text-secondary
 }

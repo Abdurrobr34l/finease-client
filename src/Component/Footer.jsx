@@ -14,10 +14,9 @@ const Footer = () => {
   const currentYear = format(new Date(), "yyyy");
 
   return (
-    <footer>
       <Container>
         {/* Top Section */}
-      <div className="text-center mb-16">
+      <div className="text-center pt-10 mb-16">
         <div className="flex justify-center mb-4">
           <img src={logo} alt="Logo" className="w-12 h-12" />
         </div>
@@ -29,7 +28,7 @@ const Footer = () => {
       </div>
 
       {/* Middle Section */}
-      <div className="max-w-7xl mx-auto grid gap-10 md:grid-cols-5 text-sm">
+      <div className="footer common-hover-effect max-w-7xl mx-auto grid gap-10 md:grid-cols-5 text-sm">
         {/* Contact */}
         <div>
           <h3 className="font-semibold mb-3">Contact</h3>
@@ -107,11 +106,10 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-gray-200 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-2">
-        <p>
-          © Copyright{" "}
-          <span className="text-primary font-medium">FinEase.com</span> All
-          rights reserved. {currentYear}
+      <div className="footer common-hover-effect border-t border-gray-200 mt-12 py-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-2">
+        <p className="flex">
+          © Copyright All rights reserved. {currentYear}
+          {/* <span className="text-primary font-medium">FinEase.com</span> */}
         </p>
         <div className="flex gap-4">
           <a href="#">Privacy & Policy</a>
@@ -119,7 +117,6 @@ const Footer = () => {
         </div>
       </div>
       </Container>
-    </footer>
   );
 };
 
