@@ -69,6 +69,10 @@ p {
   @apply shadow-none border-accent border-2 bg-accent transition-colors duration-300 ease-linear hover:text-accent hover:bg-transparent hover:border-accent
 }
 
+.transaction-form input, select {
+  @apply mt-1
+}
+
 .footer a {
   @apply transition-all duration-300 ease-linear hover:text-accent hover:scale-105
 }
