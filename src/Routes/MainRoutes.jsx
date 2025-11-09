@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/Profile/UpdateProfile";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -14,27 +15,35 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home/>,
-      },
-       {
-        path: "/register",
-        element: <Register/>,
-      },
-       {
-        path: "/login",
-        element: <Login/>,
+        element: <Home />,
       },
       {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      //* -------------PRIVATE ROUTES-------------------
+      {
         path: "/profile",
-        element: <Profile/>,
+        element:
+          <PrivateRoutes>
+            <Profile />
+          </PrivateRoutes>
       },
       {
         path: "/update-profile",
-        element: <UpdateProfile/>,
+        element:
+          <PrivateRoutes>
+            <UpdateProfile />
+          </PrivateRoutes>
       },
+      //* -------------PRIVATE ROUTES-------------------
       {
         path: "*",
-        element: <ErrorPage/>
+        element: <ErrorPage />
       }
     ]
   },

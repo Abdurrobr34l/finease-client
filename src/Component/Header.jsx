@@ -12,20 +12,24 @@ import { FiMoon, FiSun } from "react-icons/fi";
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  // 1️⃣ Load initial theme (from localStorage or default = "light")
+
+  //* Load initial theme (from localStorage or default = "light")
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
-  // 2️⃣ Apply theme to <html> tag and save to localStorage
+  //* Apply theme to <html> tag and save to localStorage
   useEffect(() => {
     const html = document.querySelector("html");
     html.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // 3️⃣ Handle toggle change
+  //* Handle toggle change
   const handleTheme = (checked) => {
     setTheme(checked ? "dark" : "light");
   };
+
+  //* Navigation Menu Links
+  
 
   return (
     <header>
