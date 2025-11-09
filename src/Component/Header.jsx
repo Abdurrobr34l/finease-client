@@ -29,7 +29,12 @@ const Header = () => {
   };
 
   //* Navigation Menu Links
-  
+  const navigationLinks = [
+    {id:1, path: "/", name: "Home"},
+    {id:3, path: "/add-transaction", name: "Add Transaction"},
+    {id:2, path: "/my-transactions", name: "My Transactions"},
+    {id:4, path: "/reports", name: "Reports"},
+  ]
 
   return (
     <header>
@@ -61,56 +66,34 @@ const Header = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content gap-3 mt-3 p-4 bg-base-100 rounded-box z-1 w-52 shadow"
               >
-                <li>
-                  <a>Item 1</a>
-                </li>
-                <li>
-                  <a>Parent</a>
-                  <ul className="p-2">
-                    <li>
-                      <a>Submenu 1</a>
-                    </li>
-                    <li>
-                      <a>Submenu 2</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>Item 3</a>
-                </li>
+               {
+                navigationLinks.map(({id, path, name}) => (
+                  <li key={id}>
+                    <Link to={path} className="transition-colors duration-300 ease-linear hover:bg-transparent hover:text-accent">{name}</Link>
+                  </li>
+                ))
+              }
               </ul>
             </div>
 
             {/* Logo */}
             <Link to={"/"}>
-              <img src={logo} alt="It is fenease logo" className="size-20 transition-transform common-hover-effect hover:scale-[103%]" />
+              <img src={logo} alt="It is fenease logo" className="size-14 transition-transform common-hover-effect hover:scale-[103%] lg:size-20" />
             </Link>
           </div>
 
           {/* Navigation Menu */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <details>
-                  <summary>Parent</summary>
-                  <ul className="p-2">
-                    <li>
-                      <a>Submenu 1</a>
-                    </li>
-                    <li>
-                      <a>Submenu 2</a>
-                    </li>
-                  </ul>
-                </details>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+            <ul className="menu menu-horizontal gap-5">
+              {
+                navigationLinks.map(({id, path, name}) => (
+                  <li key={id}>
+                    <Link to={path} className="transition-colors duration-300 ease-linear hover:bg-transparent hover:text-accent">{name}</Link>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
