@@ -3,6 +3,7 @@ import Banner from './Banner';
 import BudgetingTips from './BudgetingTips';
 import { HeadProvider } from 'react-head';
 import Planning from './Planning';
+import Overview from './Overview';
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       </HeadProvider>
 
       <Banner></Banner>
+      <Overview></Overview>
       <BudgetingTips></BudgetingTips>
       <Planning></Planning>
     </>
