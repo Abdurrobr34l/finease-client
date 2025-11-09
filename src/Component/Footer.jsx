@@ -32,7 +32,7 @@ const Footer = () => {
         {/* Contact */}
         <div>
           <h3 className="font-semibold mb-3">Contact</h3>
-          <ul className="space-y-2 text-gray-600">
+          <ul className="space-y-2 text-secondary">
             <li className="flex items-center gap-2">
               <FaPhoneAlt className="text-primary" />
               654-498-4156
@@ -55,7 +55,7 @@ const Footer = () => {
         {/* Navigate */}
         <div>
           <h3 className="font-semibold mb-3">Navigate</h3>
-          <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+          <ul className="space-y-2 text-secondary">
             <li><a href="#">Home</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Pricing</a></li>
@@ -66,7 +66,7 @@ const Footer = () => {
         {/* Resources */}
         <div>
           <h3 className="font-semibold mb-3">Resources</h3>
-          <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+          <ul className="space-y-2 text-secondary">
             <li><a href="#">Blog</a></li>
             <li><a href="#">FAQs</a></li>
             <li><a href="#">Customer Support</a></li>
@@ -77,7 +77,7 @@ const Footer = () => {
         {/* Company */}
         <div>
           <h3 className="font-semibold mb-3">Company</h3>
-          <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+          <ul className="space-y-2 text-secondary">
             <li><a href="#">About Us</a></li>
             <li><a href="#">Careers</a></li>
             <li><a href="#">Terms & Conditions</a></li>
@@ -88,7 +88,7 @@ const Footer = () => {
         {/* Follow Us */}
         <div>
           <h3 className="font-semibold mb-3">Follow Us</h3>
-          <div className="flex gap-4 text-xl text-gray-600">
+          <div className="flex gap-4 text-xl text-secondary">
             <a href="#" className="hover:text-primary transition-colors">
               <FaFacebookF />
             </a>
