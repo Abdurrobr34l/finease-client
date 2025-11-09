@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Container from "./Container";
 import logo from "../assets/logo.png";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 import { FaPortrait, FaUser } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
@@ -71,7 +71,7 @@ const Header = () => {
                {
                 navigationLinks.map(({id, path, name}) => (
                   <li key={id}>
-                    <Link to={path} className="transition-colors duration-300 ease-linear hover:bg-transparent hover:text-accent">{name}</Link>
+                    <NavLink to={path} className="p-0 transition-colors duration-300 ease-linear hover:bg-transparent hover:text-accent">{name}</NavLink>
                   </li>
                 ))
               }
@@ -86,11 +86,11 @@ const Header = () => {
 
           {/* Navigation Menu */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal gap-5">
+            <ul className="menu menu-horizontal gap-10">
               {
                 navigationLinks.map(({id, path, name}) => (
                   <li key={id}>
-                    <Link to={path} className="transition-colors duration-300 ease-linear hover:bg-transparent hover:text-accent">{name}</Link>
+                    <NavLink to={path} className="p-0 transition-colors duration-300 ease-linear hover:bg-transparent hover:text-accent">{name}</NavLink>
                   </li>
                 ))
               }

@@ -9,11 +9,11 @@ const RootLayout = () => {
     <>
       <Header></Header>
 
-      <div className="section-padding min-h-[calc(100vh-(120px+496px))] bg-base-200">  {/*min-h-[calc(100vh-(120px+496px))] ----- 576px = header(120px) + footer(456px) */}
+      <main className="section-padding min-h-[calc(100vh-(120px+496px))] bg-base-200">  {/*min-h-[calc(100vh-(120px+496px))] ----- 576px = header(120px) + footer(456px) */}
         <Container>
           <Outlet></Outlet>
         </Container>
-      </div>
+      </main>
 
       <footer>
         <Footer></Footer>

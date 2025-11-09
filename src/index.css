@@ -14,7 +14,8 @@
   default: true;
 
    --color-base-100: #E4E4E4;
-  --color-base-200: #f5f5f5;
+  /* --color-base-200: #f5f5f5; */
+  --color-base-200: #ffffff;
   --color-primary: #161616;
   --color-secondary: #354052;
   --color-accent: #0B8B60;
@@ -46,6 +47,10 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   @apply font-medium text-secondary
+}
+
+.active {
+  @apply font-bold text-accent border-b-2 rounded-none p-0
 }
 
 .section-padding {
