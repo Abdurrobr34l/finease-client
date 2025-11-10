@@ -20,11 +20,27 @@ const MyTransactions = () => {
     }
   }, [user])
 
+    if (!transactions || transactions.length === 0) {
+    return (
+      <section className="section-padding">
+        <div className="max-w-2xl mx-auto text-center p-8 bg-base-100 rounded-lg shadow">
+          <h3 className="text-2xl font-bold mb-3">No transactions yet</h3>
+          <p className="text-secondary mb-6">
+            You don't have any transactions. Start by adding your first income or expense.
+          </p>
+          <Link to="/add-transaction" className="btn btn-hover">
+            Add Transaction
+          </Link>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className='section-padding'>
       <div className=' grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 xl:grid-cols-3'>
         {
-          transactions.map(({ type, category, description, date }) => (
+          transactions.map(({ type, category, amount, date }) => (
             <div className={`rounded-xl ${type === 'Income' ? 'bg-success' : 'bg-error'
               }`}>
               {/* Category */}
@@ -47,8 +63,8 @@ const MyTransactions = () => {
 
                 {/* Contents */}
                 <div className='flex flex-col gap-1 py-4 border-t border-b'>
-                  <h2 className='text-3xl'>{category}</h2>
-                  <p>{description}</p>
+                  <h2 className='text-2xl'>{category}</h2>
+                  <p className='text-3xl'><span className='text-4xl font-bold text-accent'>৳</span> {amount}</p>
                   <span>{date}</span>
                 </div>
 
