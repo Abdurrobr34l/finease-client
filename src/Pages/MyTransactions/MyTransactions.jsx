@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-// import { AuthContext } from '../../Contexts/AuthContext';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Contexts/AuthContext';
 import axios from 'axios';
 import { FaEye, FaMinus, FaPlus } from 'react-icons/fa';
 import { Link } from 'react-router';
@@ -7,17 +7,18 @@ import { RxUpdate } from 'react-icons/rx';
 import { MdDelete } from 'react-icons/md';
 
 const MyTransactions = () => {
-  // const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   // console.log(user);
   const [transactions, setTransactions] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:3000/my-transactions")
-      .then(res => {
-        setTransactions(res.data)
-      })
-      .catch(error => console.error(error))
-  }, [])
+    if (user?.email) {
+      axios
+        .get(`http://localhost:3000/my-transactions?email=${user.email}`)
+        .then(res => setTransactions(res.data))
+        .catch(err => console.error(err));
+    }
+  }, [user])
 
   return (
     <section className='section-padding'>
