@@ -1,10 +1,53 @@
-import React from 'react';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import axios from "axios";
 
 const TransactionDetails = () => {
+  const { id } = useParams();
+  const [transaction, setTransaction] = useState(null);
+  const [categoryTotal, setCategoryTotal] = useState(0);
+
+  useEffect(() => {
+    // Fetching the single transaction
+    axios.get(`http://localhost:3000/my-transactions/${id}`)
+      .then(res => {
+        setTransaction(res.data);
+
+        // Fetching all transactions to calculate category total
+        axios.get(`http://localhost:3000/my-transactions`)
+          .then(allResponse => {
+            const allTransactions = allResponse.data;
+            // console.log(allTransactions)
+            const sameCategory = allTransactions.filter(transaction => transaction.category === res.data.category);
+            const total = sameCategory.reduce((sum, transaction) => sum + parseFloat(transaction.amount), 0);
+            setCategoryTotal(total);
+          });
+      })
+      .catch(err => console.log(err));
+  }, [id]);
+
+  if (!transaction) return <p className="text-center py-10">Loading...</p>;
+
+  const { type, category, description, amount, date, userName, userEmail } = transaction;
+
   return (
-    <div>
-      
-    </div>
+    <section className="section-padding flex justify-center">
+      <div className="card bg-base-100 p-8 max-w-lg w-full rounded-xl shadow">
+        <h2 className="text-3xl font-bold mb-6 text-center">{category} ({type})</h2>
+
+        <div className="space-y-3">
+          <p>Description: {description}</p>
+          <p>Amount: {amount} BDT</p>
+          <p>Date: {date}</p>
+          <p>User Name: {userName}</p>
+          <p>User Email: {userEmail}</p>
+          <hr />
+          <p className="text-lg font-semibold">
+            Total in this category: {categoryTotal} BDT
+          </p>
+        </div>
+      </div>
+    </section>
   );
 };
 

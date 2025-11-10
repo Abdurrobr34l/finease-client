@@ -28,9 +28,7 @@ function AddTransaction() {
       userEmail,
       userName,
     };
-
-    console.log(user);
-
+    // console.log(user);
 
     axios
       .post("http://localhost:3000/add-transaction", transactionData)
