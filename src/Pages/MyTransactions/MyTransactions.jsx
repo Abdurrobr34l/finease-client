@@ -10,6 +10,7 @@ const MyTransactions = () => {
   const { user } = useContext(AuthContext)
   // console.log(user);
   const [transactions, setTransactions] = useState([])
+  // console.log(transactions);
 
   useEffect(() => {
     if (user?.email) {
@@ -38,10 +39,10 @@ const MyTransactions = () => {
 
   return (
     <section className='section-padding'>
-      <div className=' grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 xl:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 xl:grid-cols-3'>
         {
-          transactions.map(({ type, category, amount, date }) => (
-            <div className={`rounded-xl ${type === 'Income' ? 'bg-success' : 'bg-error'
+          transactions.map(({ _id, type, category, amount, date }) => (
+            <div key={_id} className={`rounded-xl ${type === 'Income' ? 'bg-success' : 'bg-error'
               }`}>
               {/* Category */}
               <div className='ml-5 p-5 bg-base-100 rounded-r-lg border border-base-100'>
@@ -70,7 +71,7 @@ const MyTransactions = () => {
 
                 {/* Buttons */}
                 <div className='flex gap-5'>
-                  <Link className='btn btn-hover inlin-block flex items-center gap-2 mt-4 w-[47%] bg-transparent!'>
+                  <Link to={`/transactions-details/${_id}`} className='btn btn-hover inlin-block flex items-center gap-2 mt-4 w-[47%] bg-transparent!'>
                     <FaEye />
                     view More
                   </Link>
