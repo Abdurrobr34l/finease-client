@@ -19,15 +19,15 @@ const ErrorPage = () => {
         />
 
         {/* 404 Heading */}
-        <h1 className="text-6xl font-bold text-primary">404</h1>
+        <h1 className="text-6xl font-bold text-[#EEF2F6]! ">404</h1>
 
         {/* Subheading */}
-        <h2 className="text-2xl font-semibold text-secondary">
+        <h2 className="text-2xl font-semibold text-[#757983]!">
           Oops! This page got lost.
         </h2>
 
         {/* Description */}
-        <p className="text-base text-center text-gray-500 max-w-md">
+        <p className="text-base text-center text-gray-500! max-w-md">
           The page you’re looking for might have been removed or is temporarily
           unavailable. Let’s guide you back home where everything’s cozy.
         </p>
@@ -35,7 +35,7 @@ const ErrorPage = () => {
         {/* Go Home Button */}
         <Link
           to="/"
-          className="btn btn-primary mt-4 px-6 py-3 btn-hover"
+          className="btn btn-[#EEF2F6]! mt-4 px-6 py-3 shadow-none! border-accent! border-2! bg-accent! transition-colors! duration-300! ease-linear! hover:text-accent! hover:bg-transparent! hover:border-accent!"
         >
           Go to Home
         </Link>

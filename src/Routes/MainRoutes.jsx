@@ -80,13 +80,13 @@ const router = createBrowserRouter([
             <Reports />
           </PrivateRoutes>
       },
-      //* -------------PRIVATE ROUTES-------------------
-      {
-        path: "*",
-        element: <ErrorPage />
-      }
     ]
   },
+  //* -------------PRIVATE ROUTES-------------------
+  {
+    path: "*",
+    element: <ErrorPage />
+  }
 ]);
 
 export default router;
