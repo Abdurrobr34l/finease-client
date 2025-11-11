@@ -5,6 +5,7 @@ import { FaEye, FaMinus, FaPlus } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { RxUpdate } from 'react-icons/rx';
 import { MdDelete } from 'react-icons/md';
+import Swal from 'sweetalert2';
 
 const MyTransactions = () => {
   const { user } = useContext(AuthContext)
@@ -21,7 +22,30 @@ const MyTransactions = () => {
     }
   }, [user])
 
-    if (!transactions || transactions.length === 0) {
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "This will delete your transaction!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!'
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`http://localhost:3000/delete-transaction/${id}`)
+            .then(() => {
+              const remaining = transactions.filter(transactionsDel => transactionsDel._id !== id);
+              setTransactions(remaining);
+              Swal.fire('Deleted!', 'Transaction has been deleted.', 'success');
+            })
+            .catch(() => {
+              Swal.fire('Error', 'Failed to delete transaction', 'error');
+            });
+        }
+      })
+  }
+
+  if (!transactions || transactions.length === 0) {
     return (
       <section className="section-padding">
         <div className="max-w-2xl mx-auto text-center p-8 bg-base-100 rounded-lg shadow">
@@ -36,7 +60,6 @@ const MyTransactions = () => {
       </section>
     );
   }
-
   return (
     <section className='section-padding'>
       <div className='grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 xl:grid-cols-3'>
@@ -81,7 +104,7 @@ const MyTransactions = () => {
                     Update
                   </Link>
                 </div>
-                <button className='btn inlin-block flex items-center gap-2 mt-4 w-full border-2 border-error text-white transition-colors common-hover-effect bg-transparent hover:text-error lg:col-span-12'>
+                <button  onClick={() => handleDelete(_id)} className='btn inlin-block flex items-center gap-2 mt-4 w-full border-2 border-error text-white transition-colors common-hover-effect bg-transparent hover:text-error lg:col-span-12'>
                   <MdDelete />
                   Delete
                 </button>
