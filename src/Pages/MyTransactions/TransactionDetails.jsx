@@ -31,7 +31,7 @@ const TransactionDetails = () => {
   const { type, category, description, amount, date, userName, userEmail } = transaction;
 
   return (
-    <section className="section-padding flex justify-center">
+    <section className="flex justify-center">
       <div className="card bg-base-100 p-8 max-w-lg w-full rounded-xl shadow">
         <h2 className="text-3xl font-bold mb-6 text-center">{category} ({type})</h2>
 

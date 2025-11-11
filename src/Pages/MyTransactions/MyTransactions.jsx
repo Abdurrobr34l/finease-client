@@ -61,7 +61,7 @@ const MyTransactions = () => {
     );
   }
   return (
-    <section className='section-padding'>
+    <section>
       <div className='grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 xl:grid-cols-3'>
         {
           transactions.map(({ _id, type, category, amount, date }) => (

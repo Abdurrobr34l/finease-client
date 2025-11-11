@@ -11,6 +11,7 @@ import AddTransaction from "../Pages/AddTransaction/AddTransaction";
 import MyTransactions from "../Pages/MyTransactions/MyTransactions";
 import TransactionDetails from "../Pages/MyTransactions/TransactionDetails";
 import UpdateTransaction from "../Pages/MyTransactions/UpdateTransaction";
+import Reports from "../Pages/Reports/Reports";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,13 @@ const router = createBrowserRouter([
         element:
           <PrivateRoutes>
             <UpdateTransaction />
+          </PrivateRoutes>
+      },
+      {
+        path: "/reports",
+        element:
+          <PrivateRoutes>
+            <Reports />
           </PrivateRoutes>
       },
       //* -------------PRIVATE ROUTES-------------------
