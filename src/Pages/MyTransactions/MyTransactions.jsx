@@ -96,10 +96,10 @@ const MyTransactions = () => {
                 <div className='flex gap-5'>
                   <Link to={`/transactions-details/${_id}`} className='btn btn-hover inlin-block flex items-center gap-2 mt-4 w-[47%] bg-transparent!'>
                     <FaEye />
-                    view More
+                    More Details
                   </Link>
 
-                  <Link className='btn btn-hover inlin-block flex items-center gap-2 mt-4 w-[47%] bg-transparent!'>
+                  <Link to={`/update-transaction/${_id}`} className='btn btn-hover inlin-block flex items-center gap-2 mt-4 w-[47%] bg-transparent!'>
                     <RxUpdate />
                     Update
                   </Link>

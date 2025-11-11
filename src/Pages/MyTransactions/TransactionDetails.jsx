@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import axios from "axios";
 
 const TransactionDetails = () => {
@@ -46,6 +46,8 @@ const TransactionDetails = () => {
             Total in this category: {categoryTotal} BDT
           </p>
         </div>
+
+        <Link to={"/my-transactions"} className="btn btn-hover mt-5">Back</Link>
       </div>
     </section>
   );
