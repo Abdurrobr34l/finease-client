@@ -7,7 +7,7 @@ const Reports = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/my-transactions")
+    axios.get("https://finease-server.vercel.app/my-transactions")
       .then((res) => {
         setTransactions(res.data);
       })

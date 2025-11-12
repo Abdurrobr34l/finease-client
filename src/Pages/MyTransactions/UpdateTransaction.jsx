@@ -19,7 +19,7 @@ const UpdateTransaction = () => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/my-transactions/${id}`)
+    axios.get(`https://finease-server.vercel.app/my-transactions/${id}`)
       .then((res) => {
         setFormData(res.data);
       })
@@ -34,12 +34,12 @@ const UpdateTransaction = () => {
   const handleUpdateTransaction = (e) => {
     e.preventDefault();
 
-    axios.put(`http://localhost:3000/update-transaction/${id}`, formData)
-    .then(() => {
-      toast.success("Transaction updated successfully!");
-       navigate(`/transactions-details/${id}`);
-    })
-    .catch(() => {
+    axios.put(`https://finease-server.vercel.app/update-transaction/${id}`, formData)
+      .then(() => {
+        toast.success("Transaction updated successfully!");
+        navigate(`/transactions-details/${id}`);
+      })
+      .catch(() => {
         toast.error("Failed to update transaction");
       });
   }

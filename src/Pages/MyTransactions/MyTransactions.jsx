@@ -16,8 +16,11 @@ const MyTransactions = () => {
 
   useEffect(() => {
     if (user?.email) {
+      const userEmail = user.email;
+      // console.log(userEmail);
+
       axios
-        .get(`http://localhost:3000/my-transactions?sortBy=${sortField}&order=${sortOrder}`)
+        .get(`https://finease-server.vercel.app/my-transactions?email=${userEmail}&sortBy=${sortField}&order=${sortOrder}`)
         .then(res => setTransactions(res.data))
         .catch(err => console.error(err));
     }
@@ -33,7 +36,7 @@ const MyTransactions = () => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:3000/delete-transaction/${id}`)
+          axios.delete(`https://finease-server.vercel.app/delete-transaction/${id}`)
             .then(() => {
               const remaining = transactions.filter(t => t._id !== id);
               setTransactions(remaining);
@@ -87,7 +90,7 @@ const MyTransactions = () => {
       </div>
 
       <div className='grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 xl:grid-cols-3'>
-        {transactions.map(({ _id, type, category, amount, date }) => (
+        {transactions.map(({ _id, type, category, amount, date, userEmail }) => (
           <div key={_id} className={`rounded-xl ${type === 'Income' ? 'bg-success' : 'bg-error'}`}>
             <div className='ml-5 p-5 bg-base-100 rounded-r-lg border border-base-100'>
               <div className='flex items-center gap-2 pb-4'>
@@ -100,7 +103,7 @@ const MyTransactions = () => {
               </div>
 
               <div className='flex flex-col gap-1 py-4 border-t border-b'>
-                <h2 className='text-2xl'>{category}</h2>
+                <h2 className='text-2xl'>{category}{userEmail}</h2>
                 <p className='text-3xl'><span className='text-4xl font-bold text-accent'>৳</span> {amount}</p>
                 <span>{date}</span>
               </div>

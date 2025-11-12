@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { Link } from 'react-router';
+import { AuthContext } from '../../Contexts/AuthContext';
 
 const Overview = () => {
+  const { user } = useContext(AuthContext);
   const [transactions, setTransactions] = useState([]);
   const [overview, setOverview] = useState({
     totalBalance: 0,
@@ -12,8 +14,10 @@ const Overview = () => {
   });
 
   useEffect(() => {
+    if (!user?.email) return;
+
     axios
-      .get("http://localhost:3000/my-transactions")
+      .get(`https://finease-server.vercel.app/my-transactions?email=${user.email}`)
       .then((res) => {
         setTransactions(res.data);
 
@@ -35,7 +39,7 @@ const Overview = () => {
         });
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [user?.email]);
 
   return (
     <section>

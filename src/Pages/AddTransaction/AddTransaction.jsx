@@ -31,11 +31,9 @@ function AddTransaction() {
     // console.log(user);
 
     axios
-      .post("http://localhost:3000/add-transaction", transactionData)
+      .post("https://finease-server.vercel.app/add-transaction", transactionData)
       .then((res) => {
-        // You can check res.data if needed
         toast.success("Transaction added successfully!");
-        e.target.reset(); // Reset the form
       })
       .catch((err) => {
         console.error(err);

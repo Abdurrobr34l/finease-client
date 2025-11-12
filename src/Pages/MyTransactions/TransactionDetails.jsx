@@ -8,23 +8,26 @@ const TransactionDetails = () => {
   const [categoryTotal, setCategoryTotal] = useState(0);
 
   useEffect(() => {
-    // Fetching the single transaction
-    axios.get(`http://localhost:3000/my-transactions/${id}`)
+    axios.get(`https://finease-server.vercel.app/my-transactions/${id}`)
       .then(res => {
         setTransaction(res.data);
 
-        // Fetching all transactions to calculate category total
-        axios.get(`http://localhost:3000/my-transactions`)
+        axios.get(`https://finease-server.vercel.app/my-transactions?email=${res.data.userEmail}`)
           .then(allResponse => {
             const allTransactions = allResponse.data;
-            // console.log(allTransactions)
-            const sameCategory = allTransactions.filter(transaction => transaction.category === res.data.category);
-            const total = sameCategory.reduce((sum, transaction) => sum + parseFloat(transaction.amount), 0);
+            const sameCategory = allTransactions.filter(
+              transaction => transaction.category === res.data.category
+            );
+            const total = sameCategory.reduce(
+              (sum, transaction) => sum + parseFloat(transaction.amount),
+              0
+            );
             setCategoryTotal(total);
           });
       })
       .catch(err => console.log(err));
   }, [id]);
+
 
   if (!transaction) return <p className="text-center py-10">Loading...</p>;
 
