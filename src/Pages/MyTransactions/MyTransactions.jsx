@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import { RxUpdate } from 'react-icons/rx';
 import { MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import { HeadProvider } from 'react-head';
 
 const MyTransactions = () => {
   const { user } = useContext(AuthContext);
@@ -52,6 +53,10 @@ const MyTransactions = () => {
   if (!transactions || transactions.length === 0) {
     return (
       <section className="section-padding">
+        <HeadProvider>
+        <title>FinEase | My Transaction</title>
+      </HeadProvider>
+      
         <div className="max-w-2xl mx-auto text-center p-8 bg-base-100 rounded-lg shadow">
           <h3 className="text-2xl font-bold mb-3">No transactions yet</h3>
           <p className="text-secondary mb-6">
@@ -67,6 +72,9 @@ const MyTransactions = () => {
 
   return (
     <section className="section-padding">
+      <HeadProvider>
+        <title>FinEase | My Transaction</title>
+      </HeadProvider>
 
       <div className="flex items-center justify-end gap-4 mb-5">
         <select
