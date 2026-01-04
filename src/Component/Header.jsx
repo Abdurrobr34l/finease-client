@@ -32,6 +32,9 @@ const Header = () => {
   //* Navigation Public Links
   const publicLinks = [
     { id: 1, path: "/", name: "Home" },
+    { id: 2, path: "/about", name: "About" },
+    { id: 2, path: "/contact", name: "Contact" },
+    { id: 2, path: "/privacy", name: "Privacy" },
   ];
 
   //* Navigation Private Links

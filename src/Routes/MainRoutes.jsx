@@ -12,6 +12,9 @@ import MyTransactions from "../Pages/MyTransactions/MyTransactions";
 import TransactionDetails from "../Pages/MyTransactions/TransactionDetails";
 import UpdateTransaction from "../Pages/MyTransactions/UpdateTransaction";
 import Reports from "../Pages/Reports/Reports";
+import About from "../Pages/AdditionalPages/About";
+import Contact from "../Pages/AdditionalPages/Contact";
+import Privacy from "../Pages/AdditionalPages/Privacy";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },{
+        path: "/privacy",
+        element: <Privacy />,
       },
       {
         path: "/register",

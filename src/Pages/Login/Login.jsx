@@ -64,7 +64,7 @@ const Login = () => {
 
       <h2 className="title">Login to Your Account</h2>
 
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <fieldset className="fieldset p-6 w-[335px] bg-base-100 rounded-lg md:w-[500px]">
           <label className="label text-secondary">Email</label>
           <input
@@ -130,7 +130,89 @@ const Login = () => {
             </p>
           </div>
         </fieldset>
-      </form>
+      </form> */}
+      <form onSubmit={handleSubmit}>
+  <fieldset className="fieldset p-6 w-[335px] bg-base-100 rounded-lg md:w-[500px]">
+    <label className="label text-secondary">Email</label>
+    <input
+      type="email"
+      name="email"
+      className="input py-6.5 w-full bg-base-300 rounded-lg"
+      placeholder="Email"
+      required
+      disabled={isLoading}
+    />
+
+    <label className="label text-secondary mt-4">Password</label>
+    <div className="relative">
+      <input
+        type={showPassword ? "text" : "password"}
+        name="password"
+        className="input py-6.5 w-full bg-base-300 rounded-lg"
+        placeholder="Password"
+        required
+        disabled={isLoading}
+      />
+      <button
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+        className="absolute right-4 bottom-4 text-xl"
+        disabled={isLoading}
+        aria-label={showPassword ? "Hide password" : "Show password"}
+      >
+        {showPassword ? <FaEye /> : <FaEyeSlash />}
+      </button>
+    </div>
+
+    <button
+      type="submit"
+      disabled={isLoading}
+      className="btn btn-neutral mt-4 py-6 w-full btn-hover disabled:opacity-70"
+    >
+      {isLoading ? "Logging in..." : "Login"}
+    </button>
+
+    {/* Demo User Button */}
+    <button
+      type="button"
+      className="btn btn-accent mt-2 py-6 w-full btn-hover disabled:opacity-70 flex justify-center"
+      onClick={() => {
+        document.querySelector('input[name="email"]').value = "demo@fin.ease";
+        document.querySelector('input[name="password"]').value = "Demo123!";
+      }}
+      disabled={isLoading}
+    >
+      Demo User Login
+    </button>
+
+    <span className="my-2 text-secondary font-semibold text-center block">
+      or Connect with Google Account
+    </span>
+
+    <button
+      type="button"
+      onClick={handleGoogleSignIn}
+      disabled={isLoading}
+      className="btn py-6 bg-white text-[#122B45] border-[#e5e5e5] w-full transition-colors duration-200 ease-linear hover:bg-primary hover:text-accent disabled:opacity-70 flex justify-center gap-2"
+    >
+      <FaGoogle />
+      {isLoading ? "Please wait..." : "Login With Google"}
+    </button>
+
+    <div className="mt-3 text-center">
+      <p className="textarea-md">
+        Don't have an account?
+        <Link
+          to="/register"
+          className="link-hover ml-1 text-accent hover:text-accent-content"
+        >
+          Register
+        </Link>
+      </p>
+    </div>
+  </fieldset>
+</form>
+
     </section>
   );
 };
