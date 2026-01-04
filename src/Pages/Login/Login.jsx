@@ -48,7 +48,7 @@ const Login = () => {
   };
 
   return (
-    <section className="section-padding flex flex-col items-center gap-10">
+    <section className="flex flex-col items-center gap-10">
       <HeadProvider>
         <title>FinEase | Login</title>
       </HeadProvider>

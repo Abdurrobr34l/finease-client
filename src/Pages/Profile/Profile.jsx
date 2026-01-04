@@ -8,7 +8,7 @@ const Profile = () => {
 
   if (!user) {
     return (
-      <section className="section-padding flex justify-center items-center">
+      <section className="flex justify-center items-center">
         <p className="text-lg text-red-500">
           You must be logged in to view this page.
         </p>
@@ -17,7 +17,7 @@ const Profile = () => {
   }
 
   return (
-    <section className="section-padding flex flex-col items-center gap-10">
+    <section className="flex flex-col items-center gap-10">
       <HeadProvider>
         <title>FinEase | My Profile</title>
       </HeadProvider>
