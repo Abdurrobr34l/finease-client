@@ -8,6 +8,8 @@ import Testimonials from './Testimonials';
 import Features from './Features';
 import Blog from './Blog';
 import Newsletter from './Newsletter';
+import FAQ from './FAQ';
+import CTA from './CTA';
 
 const Home = () => {
   return (
@@ -24,7 +26,9 @@ const Home = () => {
       <Testimonials></Testimonials>
       <Features></Features>
       <Blog></Blog>
+      <CTA></CTA>
       <Newsletter></Newsletter>
+      <FAQ></FAQ>
     </>
   );
 };
