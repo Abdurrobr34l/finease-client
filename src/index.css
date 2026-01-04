@@ -50,7 +50,7 @@ p {
 }
 
 .active {
-  @apply font-bold text-accent border-b-2 rounded-none p-0
+  @apply font-bold text-accent border-b-2 rounded-none
 }
 
 .section-padding {
