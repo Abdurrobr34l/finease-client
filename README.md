@@ -1,6 +1,6 @@
 # FinEase – Personal Finance Management App
 
-**Live Site:** ***********************
+**Live Site:** https://finease-bd.netlify.app/
 
 FinEase is a personal finance management web application designed to help users efficiently manage their income, expenses, and savings goals. The platform allows users to record transactions, set monthly budgets, and view insightful financial summaries with charts and reports.  
 
