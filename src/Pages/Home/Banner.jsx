@@ -40,7 +40,7 @@ const BannerCarousel = () => {
   };
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden" id='home'>
       {/* Slides Container */}
       <div
         className="flex transition-transform duration-700"

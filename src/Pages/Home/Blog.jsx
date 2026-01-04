@@ -30,7 +30,7 @@ const Blog = () => {
   ];
 
   return (
-    <section>
+    <section id='blog'>
       <h2 className="title text-center mb-10">
         Latest <span className="text-accent">Financial Tips</span>
       </h2>

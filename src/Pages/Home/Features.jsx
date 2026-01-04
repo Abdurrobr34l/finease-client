@@ -30,7 +30,7 @@ const featuresData = [
 
 const Features = () => {
   return (
-    <section>
+    <section id='features'>
       <h2 className="title text-start! mb-12">
         App <span className="text-accent">Features</span>
       </h2>

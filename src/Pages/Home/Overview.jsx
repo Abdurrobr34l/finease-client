@@ -54,7 +54,7 @@ const Overview = () => {
   );
 
   return (
-    <section>
+    <section id='overview'>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8 lg:grid-cols-3 2xl:grid-cols-4">
         <h2 className="title md:text-justify!">
           Your <span className="text-accent">Financial</span> Overview

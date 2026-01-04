@@ -56,7 +56,7 @@ const Planning = () => {
 
   return (
     <>
-      <section>
+      <section id='planning'>
         <div className='hidden mb-12 2xl:flex items-center justify-between'>
           <h2 class="title">Why <span className='text-accent'>Financial Planning</span> Matters</h2>
           <Link to={"/"} className='btn btn-hover place-content-end text-end'>Read More</Link>

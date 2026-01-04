@@ -29,7 +29,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="bg-base-200">
+    <section id='faq' className="bg-base-200">
       <div className="max-w-4xl mx-auto">
         <h2 className="title text-center mb-10">
           Frequently Asked <span className="text-accent">Questions</span>

@@ -3,7 +3,7 @@ import tipImage from '../../assets/budgeting-tips.webp';
 
 const BudgetingTips = () => {
   return (
-    <section class="flex flex-col gap-10 lg:flex-row lg:items-center">
+    <section id='budgeting' class="flex flex-col gap-10 lg:flex-row lg:items-center">
       <div class="flex flex-col p-0 lg:w-1/2 2xl:w-[44%]">
         <img class="w-full rounded-lg" src={tipImage} />
       </div>

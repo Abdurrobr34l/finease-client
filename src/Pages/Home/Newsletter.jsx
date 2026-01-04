@@ -13,7 +13,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="section-padding bg-primary/10 rounded-xl">
+    <section id='newsletter' className="section-padding bg-primary/10 rounded-xl">
       <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 px-5">
         <h2 className="title text-3xl md:text-4xl">
           Stay Updated with <span className="text-accent">FinEase</span>

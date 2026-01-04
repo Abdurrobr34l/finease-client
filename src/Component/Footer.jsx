@@ -14,8 +14,8 @@ const Footer = () => {
   const currentYear = format(new Date(), "yyyy");
 
   return (
-      <Container>
-        {/* Top Section */}
+    <Container>
+      {/* Top Section */}
       <div className="text-center pt-10 mb-16">
         <div className="flex justify-center mb-4">
           <img src={logo} alt="Logo" className="w-12 h-12" />
@@ -56,10 +56,11 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-3">Navigate</h3>
           <ul className="space-y-2 text-secondary">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Success Stories</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#budgeting">Budgeting Tips</a></li>
+            <li><a href="#planning">Planning</a></li>
+            {/* <li><a href="#features">Features</a></li> */}
           </ul>
         </div>
 
@@ -67,10 +68,11 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-3">Resources</h3>
           <ul className="space-y-2 text-secondary">
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Customer Support</a></li>
-            <li><a href="#">Tools & Guides</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+            <li><a href="#testimonial">Testimonial</a></li>
+            {/* <li><a href="#">Tools & Guides</a></li> */}
           </ul>
         </div>
 
@@ -78,10 +80,12 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-3">Company</h3>
           <ul className="space-y-2 text-secondary">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            {/* <li><a href="#">About Us</a></li> */}
+            <li><a href="#features">Features</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/reports">Reports</a></li>
+            {/* <li><a href="#">Terms & Conditions</a></li> */}
+            {/* <li><a href="#">Privacy Policy</a></li> */}
           </ul>
         </div>
 
@@ -116,7 +120,7 @@ const Footer = () => {
           <a href="#">Terms & Condition</a>
         </div>
       </div>
-      </Container>
+    </Container>
   );
 };
 

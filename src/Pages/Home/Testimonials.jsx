@@ -34,7 +34,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section>
+    <section id='testimonial'>
       <h2 className="title text-center mb-12">
         What Our <span className="text-accent">Users Say</span>
       </h2>
