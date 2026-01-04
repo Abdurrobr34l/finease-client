@@ -1,44 +1,71 @@
 import { HeadProvider } from "react-head";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
 
 function AddTransaction() {
   const { user } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleAddTransaction = (e) => {
+  const handleAddTransaction = async (e) => {
     e.preventDefault();
 
-    const userEmail = user?.email || "";
-    const userName = user?.displayName || "";
+    if (!user?.email) {
+      toast.error("You must be logged in to add a transaction.");
+      return;
+    }
 
-    const type = e.target.type.value;
-    const category = e.target.category.value;
-    const amount = e.target.amount.value;
-    const description = e.target.description.value;
-    const date = e.target.date.value;
+    const form = e.target;
+
+    const type = form.type.value;
+    const category = form.category.value;
+    const amount = Number(form.amount.value);
+    const description = form.description.value.trim();
+    const date = form.date.value;
+
+    // Basic validation
+    if (!category) {
+      toast.error("Please select a category.");
+      return;
+    }
+
+    if (amount <= 0) {
+      toast.error("Amount must be greater than zero.");
+      return;
+    }
+
+    if (description.length < 3) {
+      toast.error("Description must be at least 3 characters.");
+      return;
+    }
 
     const transactionData = {
       type,
       category,
-      amount: Number(amount),
+      amount,
       description,
       date,
-      userEmail,
-      userName,
+      userEmail: user.email,
+      userName: user.displayName || "Unknown",
     };
-    // console.log(user);
 
-    axios
-      .post("https://finease-server.vercel.app/add-transaction", transactionData)
-      .then((res) => {
-        toast.success("Transaction added successfully!");
-      })
-      .catch((err) => {
-        console.error(err);
-        toast.error("Failed to add transaction");
-      });
+    setIsLoading(true);
+
+    try {
+      await axios.post(
+        "https://finease-server.vercel.app/add-transaction",
+        transactionData
+      );
+
+      toast.success("Transaction added successfully!");
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to add transaction. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -51,24 +78,25 @@ function AddTransaction() {
 
       <form onSubmit={handleAddTransaction}>
         <fieldset className="fieldset transaction-form flex flex-col items-start p-6 w-[335px] bg-base-100 rounded-lg md:w-full lg:flex-row lg:gap-10">
-
-          <div className="mt-3">
-            {/* Type */}
+          
+          {/* LEFT COLUMN */}
+          <div className="mt-3 w-full">
             <label className="label text-secondary">Type</label>
             <select
               name="type"
               className="input h-[53px] w-full bg-base-300 rounded-lg"
+              disabled={isLoading}
               required
             >
               <option value="Income">Income</option>
               <option value="Expense">Expense</option>
             </select>
 
-            {/* Category */}
             <label className="label text-secondary mt-3">Category</label>
             <select
               name="category"
               className="select h-[53px] w-full bg-base-300 rounded-lg"
+              disabled={isLoading}
               required
             >
               <option value="">Select Category</option>
@@ -81,64 +109,62 @@ function AddTransaction() {
             </select>
           </div>
 
-          <div>
-            {/* Amount */}
+          {/* MIDDLE COLUMN */}
+          <div className="w-full">
             <label className="label text-secondary mt-3">Amount</label>
             <input
               type="number"
               name="amount"
               placeholder="Amount in BDT"
+              className="input py-6.5 w-full bg-base-300 rounded-lg"
+              disabled={isLoading}
               required
-              className="input mb-3 py-6.5 w-full bg-base-300 rounded-lg"
             />
 
-            {/* Description */}
             <label className="label text-secondary mt-3">Description</label>
             <input
               type="text"
               name="description"
               placeholder="Description"
+              className="input py-6.5 w-full bg-base-300 rounded-lg"
+              disabled={isLoading}
               required
-              className="input mb-3 py-6.5 w-full bg-base-300 rounded-lg"
             />
 
-            {/* Date */}
             <label className="label text-secondary mt-3">Date</label>
             <input
               type="date"
               name="date"
+              className="input py-6.5 w-full bg-base-300 rounded-lg"
+              disabled={isLoading}
               required
-              className="input mb-4 py-6.5 w-full bg-base-300 rounded-lg"
             />
           </div>
 
-          <div>
-            {/* User Email (Read-only) */}
+          {/* RIGHT COLUMN */}
+          <div className="w-full">
             <label className="label text-secondary mt-3">User Email</label>
             <input
               type="email"
-              name="userEmail"
               value={user?.email || ""}
               readOnly
-              className="input mb-3 h-[53px] w-full bg-base-300 rounded-lg cursor-not-allowed"
+              className="input h-[53px] w-full bg-base-300 rounded-lg cursor-not-allowed"
             />
 
-            {/* User Name (Read-only) */}
             <label className="label text-secondary mt-3">User Name</label>
             <input
               type="text"
-              name="userName"
-              value={user?.name || user?.displayName || ""}
+              value={user?.displayName || ""}
               readOnly
-              className="input mb-4 h-[53px] w-full bg-base-300 rounded-lg cursor-not-allowed"
+              className="input h-[53px] w-full bg-base-300 rounded-lg cursor-not-allowed"
             />
 
-            {/* Submit Button */}
             <button
               type="submit"
-              className="btn btn-neutral mt-4 py-6 w-full btn-hover"
+              disabled={isLoading}
+              className="btn btn-neutral mt-6 py-6 w-full btn-hover disabled:opacity-70"
             >
-              Add Transaction
+              {isLoading ? "Adding..." : "Add Transaction"}
             </button>
           </div>
 

@@ -11,22 +11,24 @@ const UpdateProfile = () => {
   const [name, setName] = useState(user?.displayName || "");
   const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
   const [updating, setUpdating] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
+    if (updating) return;
+
     setUpdating(true);
     try {
       await updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photoURL || null,
       });
-      
+
       toast.success("Profile updated successfully!");
       navigate("/profile");
     } catch (err) {
-      console.error("Profile update error:", err);
-      toast.error(err.message || "Failed to update profile.");
+      console.error(err);
+      toast.error("Failed to update profile");
     } finally {
       setUpdating(false);
     }
@@ -43,7 +45,7 @@ const UpdateProfile = () => {
   }
 
   return (
-    <section className="section-padding flex flex-col items-center gap-10">
+    <section className="flex flex-col items-center gap-10">
       <HeadProvider>
         <title>FinEase | Update Profile</title>
       </HeadProvider>
@@ -83,7 +85,9 @@ const UpdateProfile = () => {
         <button
           type="submit"
           disabled={updating}
-          className="btn btn-neutral mt-4 py-6 w-full btn-hover"
+          className={`btn btn-neutral mt-4 py-6 w-full btn-hover ${
+            updating ? "opacity-70 cursor-not-allowed" : ""
+          }`}
         >
           {updating ? "Updating..." : "Update Profile"}
         </button>
