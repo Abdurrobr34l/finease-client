@@ -4,6 +4,7 @@ import BudgetingTips from './BudgetingTips';
 import { HeadProvider } from 'react-head';
 import Planning from './Planning';
 import Overview from './Overview';
+import Testimonials from './Testimonials';
 
 const Home = () => {
   return (
@@ -16,6 +17,8 @@ const Home = () => {
       <Overview></Overview>
       <BudgetingTips></BudgetingTips>
       <Planning></Planning>
+      
+      <Testimonials></Testimonials>
     </>
   );
 };
